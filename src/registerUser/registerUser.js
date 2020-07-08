@@ -1,6 +1,7 @@
 // import ReactDOM from 'react-dom';
 import React, { Component } from 'react'
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
+import NavBar from '../navBar/navBar';
 var apiCall = require('../configuration/config')
 
 class RegisterUser extends Component {
@@ -44,13 +45,17 @@ class RegisterUser extends Component {
 
     handleUpdate = (event) => {
 
-        this.setState({redirect:"/update"})
+        this.setState({ redirect: "/update" })
 
     }
 
     render() {
         return (
+
             <div>
+                <div>
+                    <NavBar></NavBar>
+                </div>
                 <h1>Add User To Address Book</h1>
                 <form>
                     <input type="text" name="firstName" placeholder="firstName" onChange={this.handleChange} value={this.state.firstName}></input>
