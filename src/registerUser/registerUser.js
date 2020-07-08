@@ -40,6 +40,7 @@ class RegisterUser extends Component {
         console.log("data at submit", userDetails);
         apiCall.registerUser(userDetails).then(res => {
             console.log("after create user", res);
+            alert(`${this.state.firstName} ${this.state.lastName}  Register Successfully !!!!!`)
         })
     }
 
