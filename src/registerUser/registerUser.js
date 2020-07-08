@@ -1,5 +1,6 @@
 // import ReactDOM from 'react-dom';
 import React, { Component } from 'react'
+import { Redirect } from "react-router-dom";
 var apiCall = require('../configuration/config')
 
 class RegisterUser extends Component {
@@ -12,10 +13,12 @@ class RegisterUser extends Component {
             city: "",
             stateCode: "",
             zip: "",
-            phoneNumber: ""
+            phoneNumber: "",
+            redirect: null
         }
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleUpdate = this.handleUpdate.bind(this);
     }
 
     handleChange(event) {
@@ -37,6 +40,12 @@ class RegisterUser extends Component {
         apiCall.registerUser(userDetails).then(res => {
             console.log("after create user", res);
         })
+    }
+
+    handleUpdate = (event) => {
+
+        this.setState({redirect:"/update"})
+
     }
 
     render() {
@@ -66,7 +75,12 @@ class RegisterUser extends Component {
                     <br></br>
                     <br></br>
                     <button type="submit" onClick={this.handleSubmit}>Submit</button>
+                    <br></br>
+                    <br></br>
 
+                    <div>
+                        <button type="submit" onClick={this.handleUpdate}>Update</button> < button type="submit">Delete</ button>
+                    </div>
                 </form>
             </div>
         );
